@@ -1,0 +1,41 @@
+<!--
+  1. "!"と入力して、tabキーを押し、HTMLの雛形を作成する。
+  2. script要素でmain.jsを読み込む。
+-->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <div id="display-count">0</div>
+    <button id="button-count-up">+1</button>
+    <button id="button-count-down">-1</button>
+    <button id="button-dengen">電源ON</button>
+    <div id="display-rireki"></div>
+
+    <script>
+      const displayCount = document.getElementById("display-count")
+      const buttonCountUp = document.getElementById("button-count-up")
+      const buttonCountDown = document.getElementById("button-count-down")
+      const buttonDengen = document.getElementById("button-dengen")
+      const displayRireki = document.getElementById("display-rireki")
+
+      let count = 0
+      let dengen = false
+
+      // ボタン要素のonclickハンドラに関数を代入する
+      buttonCountUp.onclick = function() {
+        // count を更新
+        count += 1
+        // count を表示
+        displayCount.textContent = count
+        const divRireki = document.createElement("div")
+        divRireki.textContent = "□".repeat(count)
+      }
+    </script>
+  </body>
+</html>
