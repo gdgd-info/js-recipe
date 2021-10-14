@@ -12,6 +12,35 @@ addButton.onclick = function() {
   inputElement.value = ""
 }
 
+/*
+inputElement.addEventListener('keypress', function(e) {
+  if (e.keyCode === 76) {
+    // カードを作成する
+    const card = createCard(inputElement.value)
+    container.append(card)
+  }
+  // 入力欄を空にする
+  inputElement.value = ""
+
+}
+*/
+
+inputElement.onkeydown = function(event) {
+  if (event.key === "Enter") {
+    //const kakutei = document.createElement("div")
+    //kakutei.className = "kakutei"
+    //kakutei.textContent = "変更を確定しますか(Enter)"
+    //container.append(kakutei)
+    //if (event.key === "y") {
+
+    // カードを作成する
+    const card = createCard(inputElement.value)
+    container.append(card)
+  }
+  // 入力欄を空にする
+  inputElement.value = ""
+}
+
 // 共通の処理：テキストからカードを作成する
 const createCard = function(text) {
   // カードの枠を作る
