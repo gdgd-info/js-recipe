@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const aisatsu = ["おはよう", "こんにちは", "こんばんは"]
+      aisatsu.push("おやすみ")
+      aisatsu.splice(1, 1, "Hello")
+      for (let i = 0; i < aisatsu.length; i++) {
+        aisatsu[i] = i + " " + aisatsu[i]
+      }
+
+      //配列の要素をJSで操作する ->  プロトタイプメソッド使用
+
+      //プロトタイプメソッド
+      const ABC = "ABC".includes("A")
+      console.log(ABC)
+
+      //Array.prototype.push を使う
+      aisatsu.push("おやすみ")
+      console.log(aisatsu)
+
+      //もっと実用的には、オブジェクトと組み合わせる
+      const memos = [
+        {
+          text: "おはよう",
+          createdAt: new Date("2021-10-17T09:00:00"),
+        },
+        {
+          text: "こんにちは",
+          createdAt: new Date("2021-10-17T12:00:00"),
+        },
+        {
+          text: "こんばんは",
+          createdAt: new Date("2021-10-17T18:00:00"),
+        },
+      ]
+
+      for (let i = 0; i < memos.length; i++) {
+        console.log(memos[i].text, memos[i].createdAt)
+      }
+
+      // for文でtextを処理する
+    </script>
+  </body>
+</html>
