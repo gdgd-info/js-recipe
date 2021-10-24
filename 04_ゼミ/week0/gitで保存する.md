@@ -2,6 +2,6 @@
 
 ```bash
 git add .
-git commit -m "Vue.jsの練習をしました2"
+git commit -m "Vue.jsの練習をしました3"
 git push origin master
 ```
