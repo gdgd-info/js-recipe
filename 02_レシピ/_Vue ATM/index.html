@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>銀行アプリ</title>
+  </head>
+  <body>
+    <h1>入力画面</h1>
+
+    <section id="app">
+      <input type="text" v-model="text" />
+
+      <div>
+        <div>入力額: {{ text }} 円</div>
+        <button v-on:click="inputMoney" v-bind:disabled="isDisabled1">
+          入金
+        </button>
+        <button v-on:click="outputMoney" v-bind:disabled="isDisabled2">
+          出金
+        </button>
+      </div>
+
+      <h1>口座残高</h1>
+
+      <div>残高: {{zandaka}} 円</div>
+
+      <h1>取引記録</h1>
+
+      <div v-for="(logs, index) in logs">
+        日付: {{logs.date}} <br />
+        操作: {{logs.type }}<br />
+        金額: {{logs.money}}<br />
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+
+        data: {
+          text: "1000",
+          zandaka: 0,
+          logs: [],
+          isDisabled1: false,
+          isDisabled2: false,
+        },
+
+        methods: {
+          inputMoney: function() {
+            if (this.zandaka >= 0) {
+              this.isDisabled2 = false
+            }
+            this.zandaka += Number(this.text)
+            const now = new Date()
+            this.logs.push({
+              date: now,
+              type: "入金",
+              money: Number(this.text),
+            })
+          },
+          outputMoney: function() {
+            if (this.zandaka - Number(this.text) >= 0) {
+              this.isDisabled2 = true
+              this.zandaka -= Number(this.text)
+              const now = new Date()
+              this.logs.push({
+                date: now,
+                type: "出金",
+                money: Number(this.text),
+              })
+            } else {
+              this.isDisabled2 = false
+            }
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
